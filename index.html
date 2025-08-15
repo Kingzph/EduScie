@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduScie - AI Educational System for PPCNSHS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <div class="welcome-header">
+                <h1>Welcome to <strong>EduScie</strong></h1>
+                <h2>AI Educational System</h2>
+                <h3>Puerto Princesa City National Science High School</h3>
+                <div class="academic-year-badge">Academic Year 2025-2026</div>
+            </div>
+            
+            <div class="welcome-info">
+                <div class="research-notice">
+                    <h4>🔬 Research Study Implementation</h4>
+                    <p>This platform is part of a research study to evaluate the effectiveness of AI in enriching comprehension among students at Puerto Princesa City National Science High School. The system provides guided explanations that foster ethical learning in Mathematics, Science, and English.</p>
+                </div>
+                
+                <div class="platform-description">
+                    <h4>🤖 About EduScie</h4>
+                    <p>EduScie is an AI-powered educational assistant designed to:</p>
+                    <ul>
+                        <li>Provide guided explanations for complex subjects</li>
+                        <li>Support ethical learning practices</li>
+                        <li>Track student progress with LRN authentication</li>
+                        <li>Enable teacher monitoring and verification</li>
+                    </ul>
+                </div>
+                
+                <div class="subjects-preview">
+                    <h4>📚 Supported Subjects</h4>
+                    <div class="subject-badges">
+                        <span class="subject-badge math">📊 Mathematics</span>
+                        <span class="subject-badge science">🔬 Science</span>
+                        <span class="subject-badge english">📝 English</span>
+                    </div>
+                </div>
+                
+                <div class="team-preview">
+                    <h4>👥 Development Team</h4>
+                    <p><strong>Head Developer:</strong> Zamora, Klint Jhon C.</p>
+                    <p><strong>Assistant Developers:</strong> Crispino, Juleia Luzelle K. • Gapulao, Ethan Jared S. • Garcia, Ilona Jessica E. • Panes, Diego Miguel B. • Rea, Nicah Anie Viktoria S.</p>
+                </div>
+            </div>
+            
+            <button id="enterPlatformBtn" class="enter-platform-btn">
+                Enter EduScie Platform
+            </button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login to EduScie Platform</h2>
+            <div class="login-tabs">
+                <button class="tab-btn active" data-tab="student">Student</button>
+                <button class="tab-btn" data-tab="teacher">Teacher</button>
+            </div>
+
+            <!-- Student Login -->
+            <div id="student-tab" class="tab-content active">
+                <form id="studentLogin">
+                    <label for="lrn">LRN (Learner Reference Number):</label>
+                    <input type="text" id="lrn" name="lrn" required placeholder="Enter your 12-digit LRN">
+                    <div class="lrn-info">
+                        <small style="color: #666; font-size: 12px; margin-top: 8px; display: block;">
+                            Your LRN will automatically identify your name and credentials.
+                        </small>
+                    </div>
+                    <button type="submit">Login as Student</button>
+                </form>
+            </div>
+
+            <!-- Teacher Login -->
+            <div id="teacher-tab" class="tab-content">
+                <form id="teacherLogin">
+                    <label for="teacherEmail">Gmail Account:</label>
+                    <input type="email" id="teacherEmail" name="teacherEmail" required
+                        placeholder="Enter your authorized Gmail">
+                    <label for="teacherPassword">Password:</label>
+                    <input type="password" id="teacherPassword" name="teacherPassword" required
+                        placeholder="Enter your password">
+                    <div class="teacher-info">
+                        <small style="color: #666; font-size: 12px; margin-top: 8px; display: block;">
+                            Only authorized teacher Gmail accounts can access the monitoring dashboard.
+                        </small>
+                    </div>
+                    <button type="submit">Login as Teacher</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="app" class="hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1>EduScie - Puerto Princesa City National Science High School</h1>
+                <div class="user-info">
+                    <span id="userDisplay"></span>
+                    <button id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="app-nav">
+            <button class="nav-btn active" data-section="home">Home</button>
+            <button class="nav-btn" data-section="chat">AI Assistant</button>
+            <button class="nav-btn" data-section="subjects">Subjects</button>
+            <button class="nav-btn" data-section="dashboard" id="dashboardBtn">Dashboard</button>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home-section" class="app-section active">
+            <div class="home-container">
+                <div class="welcome-banner">
+                    <h1><strong>EduScie</strong></h1>
+                    <p>AI Educational System for Puerto Princesa City National Science High School</p>
+                    <div class="academic-year">SY 2025-2026</div>
+                    <div
+                        style="margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.2); border-radius: 12px;">
+                        <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 15px;">Welcome to Your Learning
+                            Journey!</p>
+                        <p style="font-size: 1rem; opacity: 0.95;">Please click the <strong>AI Assistant</strong> tab
+                            above to start your educational session. Our AI will guide you through Mathematics, Science,
+                            and English concepts with personalized explanations.</p>
+                        <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">
+                            <strong>Research Participants:</strong> This platform is designed for authenticated learning
+                            with LRN-based student access and teacher monitoring capabilities.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="development-team">
+                    <h2>Development Team</h2>
+                    <div class="team-grid">
+                        <div class="team-member head-developer">
+                            <h3>Head Developer</h3>
+                            <p><strong>Zamora, Klint Jhon C.</strong></p>
+                        </div>
+                        <div class="team-member assistants">
+                            <h3>Assistant Developers</h3>
+                            <ul>
+                                <li><strong>Crispino, Juleia Luzelle K.</strong></li>
+                                <li><strong>Gapulao, Ethan Jared S.</strong></li>
+                                <li><strong>Garcia, Ilona Jessica E.</strong></li>
+                                <li><strong>Panes, Diego Miguel B.</strong></li>
+                                <li><strong>Rea, Nicah Anie Viktoria S.</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="platform-features">
+                    <h2>Platform Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🤖</div>
+                            <h3>AI-Powered Learning</h3>
+                            <p>Get guided explanations that foster ethical learning through AI assistance</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📚</div>
+                            <h3>Multi-Subject Support</h3>
+                            <p>Comprehensive support for Mathematics, Science, and English subjects</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">👨‍🏫</div>
+                            <h3>Teacher Monitoring</h3>
+                            <p>Advanced monitoring and analytics for educators to track student progress</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔒</div>
+                            <h3>Secure Authentication</h3>
+                            <p>LRN-based student access and Gmail-authenticated teacher accounts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Section -->
+        <section id="chat-section" class="app-section">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2>EduScie AI Assistant</h2>
+                    <p>Get guided explanations for Math, Science, and English concepts!</p>
+                    <div class="subject-tags">
+                        <span class="subject-tag math">Mathematics</span>
+                        <span class="subject-tag science">Science</span>
+                        <span class="subject-tag english">English</span>
+                    </div>
+                </div>
+                <div id="chatMessages" class="chat-messages"></div>
+                <div class="chat-input-container">
+                    <textarea id="chatInput" placeholder="Type your message..."></textarea>
+                    <div class="chat-controls">
+                    <button id="sendBtn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subjects Section -->
+        <section id="subjects-section" class="app-section">
+            <div class="subjects-container">
+                <h2>Subject-Specific AI Assistance</h2>
+                <div class="subjects-grid">
+                    <div class="subject-card math-card">
+                        <div class="subject-header">
+                            <div class="subject-icon">📊</div>
+                            <h3>Mathematics</h3>
+                        </div>
+                        <div class="subject-content">
+                            <p>Get step-by-step guidance for mathematical concepts, problem-solving strategies, and
+                                formula explanations.</p>
+                            <button class="subject-btn" data-subject="math">Start Math Session</button>
+                        </div>
+                    </div>
+                    <div class="subject-card science-card">
+                        <div class="subject-header">
+                            <div class="subject-icon">🔬</div>
+                            <h3>Science</h3>
+                        </div>
+                        <div class="subject-content">
+                            <p>Explore scientific principles, experiments, theories, and real-world applications across
+                                all science fields.</p>
+                            <button class="subject-btn" data-subject="science">Start Science Session</button>
+                        </div>
+                    </div>
+                    <div class="subject-card english-card">
+                        <div class="subject-header">
+                            <div class="subject-icon">📝</div>
+                            <h3>English</h3>
+                        </div>
+                        <div class="subject-content">
+                            <p>Improve grammar, vocabulary, writing skills, literature analysis, and language
+                                comprehension.</p>
+                            <button class="subject-btn" data-subject="english">Start English Session</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section (Teacher Only) -->
+        <section id="dashboard-section" class="app-section">
+            <div class="dashboard-container">
+                <h2>Teacher Monitoring Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="dashboard-card active-students">
+                        <h3>Active Students</h3>
+                        <div id="activeStudentsList" class="active-students-list"></div>
+                    </div>
+                    <div class="dashboard-card student-activity">
+                        <h3>Recent Student Activity</h3>
+                        <div id="studentActivityList" class="activity-list"></div>
+                    </div>
+                    <div class="dashboard-card chat-monitor">
+                        <h3>Live Chat Monitor</h3>
+                        <div id="chatMonitor" class="chat-monitor-list"></div>
+                    </div>
+                    <div class="dashboard-card analytics">
+                        <h3>Question Analytics</h3>
+                        <div id="analyticsChart" class="analytics-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading hidden">
+        <div class="spinner"></div>
+        <p>AI is thinking...</p>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="popupModal" class="popup-modal">
+        <div class="popup-content">
+            <span id="popupIcon" class="popup-icon">⚠️</span>
+            <h3 id="popupTitle" class="popup-title">Authentication Error</h3>
+            <p id="popupMessage" class="popup-message">Invalid credentials provided.</p>
+            <button id="popupBtn" class="popup-btn">Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
